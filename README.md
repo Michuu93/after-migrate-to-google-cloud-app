@@ -38,3 +38,5 @@ After accepting terraform changes, resources will be created:
 - Cloud Storage Bucket IAM Member for frontend
 - Cloud Pub/Sub Topic
 - Cloud Function
+
+Finally run frontend and function deploy triggers in Cloud Build.
