@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+.centerButton {
+  text-align: center;
+}
+
+.userProfile {
+  text-align: center;
+
+  .centerButton {
+    margin: 10px auto 10px;
+  }
+}
+
+.userImg {
+  border-radius: 50%;
+}
+
+.userName {
+  color: mat-color(mat-palette($mat-blue));
+}
+
+.tokenText {
+  width: 100%;
+}

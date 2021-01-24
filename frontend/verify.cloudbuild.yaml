@@ -1,0 +1,21 @@
+steps:
+  - id: fetch-dependencies-cache
+    name: gcr.io/cloud-builders/gsutil
+    entrypoint: bash
+    args: ['../yarn-cache-builder/yarn-cache-fetch.sh', '${_CACHE_BUCKET}']
+    dir: 'frontend'
+  - id: yarn-install
+    name: node:12.13.1
+    entrypoint: yarn
+    args: ['install']
+    dir: 'frontend'
+  - id: yarn-build
+    name: node:12.13.1
+    entrypoint: yarn
+    args: ['build']
+    dir: 'frontend'
+  - id: push-dependencies-cache
+    name: gcr.io/cloud-builders/gsutil
+    entrypoint: bash
+    args: ['../yarn-cache-builder/yarn-cache-push.sh', '${_CACHE_BUCKET}']
+    dir: 'frontend'

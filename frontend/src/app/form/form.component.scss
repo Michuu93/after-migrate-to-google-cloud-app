@@ -1,0 +1,25 @@
+:host {
+  .form {
+    text-align: center;
+
+    mat-form-field {
+      margin: 0 5px;
+    }
+  }
+
+  .rightButton {
+    text-align: right;
+
+    button {
+      margin-left: 20px;
+    }
+  }
+
+  .centerButton {
+    text-align: center;
+  }
+
+  pre {
+    white-space: pre-wrap;
+  }
+}

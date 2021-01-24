@@ -1,0 +1,9 @@
+variable "gcp-project" {}
+variable "gcp-region" {}
+variable "gcp-zone" {}
+variable "frontend-bucket-name" {}
+variable "cache-bucket-name" {}
+variable "pubsub-topic" {}
+variable "firestore-collection" {}
+variable "github-owner" {}
+variable "github-repository" {}

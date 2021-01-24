@@ -1,0 +1,8 @@
+.idea/
+*.iml
+before-migrate-to-google-cloud-app.iml
+./
+.terraform/
+node_modules/
+dist/
+yarn-error.log

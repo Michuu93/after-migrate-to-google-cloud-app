@@ -1,0 +1,30 @@
+steps:
+  - id: fetch-dependencies-cache
+    name: gcr.io/cloud-builders/gsutil
+    entrypoint: bash
+    args: ['../yarn-cache-builder/yarn-cache-fetch.sh', '${_CACHE_BUCKET}']
+    dir: 'function'
+  - id: yarn-install
+    name: node:12.13.1
+    entrypoint: yarn
+    args: ['install']
+    dir: 'function'
+  - id: deploy-function
+    name: gcr.io/cloud-builders/gcloud
+    args: [
+      'beta', 'functions', 'deploy', 'demo-function',
+      '--runtime', 'nodejs10',
+      '--trigger-topic', '${_PUBSUB_TOPIC}',
+      '--region', '${_GCP_REGION}',
+      '--timeout', '10',
+      '--memory', '128MB',
+      '--max-instances', '1',
+      '--entry-point', 'main',
+      '--set-env-vars', 'COLLECTION_NAME=${_FIRESTORE_COLLECTION}'
+    ]
+    dir: 'function'
+  - id: push-dependencies-cache
+    name: gcr.io/cloud-builders/gsutil
+    entrypoint: bash
+    args: ['../yarn-cache-builder/yarn-cache-push.sh', '${_CACHE_BUCKET}']
+    dir: 'function'

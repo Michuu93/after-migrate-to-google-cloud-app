@@ -1,0 +1,8 @@
+steps:
+  - name: 'hashicorp/terraform:0.12.26'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        terraform init && terraform plan
+    dir: 'infrastructure'
