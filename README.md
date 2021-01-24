@@ -16,7 +16,7 @@ export const environment = {
 gcp-project = "TODO" // GCP Project ID
 gcp-region = "europe-west3" // GCP Region
 gcp-zone = "europe-west3-a" // GCP Zone
-frontend-bucket-name = "demo-frontend" // Bucket name for frontend static files (URL address for HTTP Configuration, e.g. "example.com")
+frontend-bucket-name = "demo-frontend" // Bucket name for frontend static files (URL address for HTTP Configuration, e.g. "example.com", domain ownership must be verified)
 cache-bucket-name = "demo-yarn-cache" // Bucket name for yarn cache scripts
 pubsub-topic = "demo-topic" // Cloud Pub/Sub topic name
 firestore-collection = "demo-collection" // Cloud Firestore collection name
@@ -25,4 +25,16 @@ github-repository = "TODO" // GitHub application repository name for CI/CD
 ```
 
 # Initialize infrastructure and deploy application:
-- TODO
+First create a bucket in Cloud Storage for Terraform State, it must have the same name as configured in the file `infrastructure/backend.tf`.  
+Then execute the commands in the folder`infrastructure/`:
+```sh
+terraform init
+terraform plan
+terraform apply
+```
+After accepting terraform changes, resources will be created:
+- Cloud Build Triggers
+- Cloud Storage Buckets
+- Cloud Storage Bucket IAM Member for frontend
+- Cloud Pub/Sub Topic
+- Cloud Function

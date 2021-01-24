@@ -10,7 +10,7 @@ resource "google_cloudbuild_trigger" "verify-pr-demo-frontend" {
     owner = var.github-owner
     name = var.github-repository
     pull_request {
-      branch = "^master$"
+      branch = "^main$"
       comment_control = "COMMENTS_ENABLED"
     }
   }

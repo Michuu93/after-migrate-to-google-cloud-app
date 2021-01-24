@@ -1,7 +1,7 @@
-resource "google_cloudbuild_trigger" "deploy-master-demo-function" {
+resource "google_cloudbuild_trigger" "deploy-main-demo-function" {
   provider = google-beta
-  name = "deploy-master-demo-function"
-  description = "[demo] Deploy master: function"
+  name = "deploy-main-demo-function"
+  description = "[demo] Deploy main: function"
   filename = "function/deploy.cloudbuild.yaml"
   included_files = [
     "function/**"
@@ -10,7 +10,7 @@ resource "google_cloudbuild_trigger" "deploy-master-demo-function" {
     owner = var.github-owner
     name = var.github-repository
     push {
-      branch = "^master$"
+      branch = "^main$"
     }
   }
   substitutions = {
